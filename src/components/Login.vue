@@ -179,7 +179,7 @@ export default {
     width: 20px;
     border-radius: 2px;
     background: #ffbb00;
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
   }
@@ -198,6 +198,7 @@ export default {
     &--terms {
       font-size: 12px;
       margin-right: 4px;
+      padding-left: 30px;
     }
   }
   &__input {
@@ -215,12 +216,16 @@ export default {
     color: #000;
     font-weight: bold;
     transform: scaleX(-1) rotate(-35deg);
+    margin-top: -2px;
   }
 }
 .terms {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 12px;
-  width: 85%;
+  width: 100%;
+  z-index: 3;
+  .login__link {
+    margin-left: 30px;
+  }
 }
 </style>
