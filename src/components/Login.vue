@@ -1,56 +1,54 @@
 <template>
   <div class="login">
-   <form action="#">
-     <div class="login__field">
-     <label for="username" class="login__label">Username</label>
-      <input v-model="username" v-validate="'required'" name="username" type="text" class="login__input" placeholder="dawiddomanski">
-      <span class="login__error" v-show="errors.has('username')">{{ errors.first('username') }}</span>
-     </div>
-     
+    <form action="#">
+      <div class="login__field">
+        <label for="username" class="login__label">Username</label>
+        <input v-model="username" v-validate="'required'" name="username" type="text" class="login__input" placeholder="dawiddomanski">
+        <span class="login__error" v-show="errors.has('username')">{{ errors.first('username') }}</span>
+      </div>
+      
+      <div class="login__field">
+        <label for="password" class="login__label">Password</label>
+        <input v-model="password" v-validate="'required|min:6'" name="password" type="password" class="login__input" placeholder="*******">
+        <span class="login__error" v-show="errors.has('password')">{{ errors.first('password') }}</span>
+      </div>
 
       <div class="login__field">
-     <label for="password" class="login__label">Password</label>
-      <input v-model="password" v-validate="'required|min:6'" name="password" type="password" class="login__input" placeholder="*******">
-      <span class="login__error" v-show="errors.has('password')">{{ errors.first('password') }}</span>
-     </div>
-
-     <div class="login__field">
-     <label for="email" class="login__label">E-mail</label>
-      <input v-model="email" v-validate="'required|email'"  name="email" type="email" class="login__input" placeholder="your e-mail goes here...">
-      <span class="login__error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
-     </div>
-     
-
-     <div class="login__field login__field--terms">
-      <input type="checkbox" class="login__checkbox" id="terms"  name="terms" v-validate="'required'">
-      <span class="login__fakebox"></span>
-      <div class="terms">
-      <label for="terms" class="login__label--terms">I agree to all statements included in </label><a href="#" class="login__link" v-on:click.self.prevent>terms of service</a>
+        <label for="email" class="login__label">E-mail</label>
+        <input v-model="email" v-validate="'required|email'"  name="email" type="email" class="login__input" placeholder="your e-mail goes here...">
+        <span class="login__error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
       </div>
-      <span class="login__error" v-show="errors.has('terms')">{{ errors.first('terms') }}</span>
-     </div>
-
-     <div class="login__field login__field--actions">
-       <a href="#" class="login__btn" v-on:click.self.prevent @click="nextStep">Sign Up</a>
-       <a href="#" class="login__link" v-on:click.self.prevent>I am already a member</a>
-     </div>
-   </form>
-
-   <modal name="confirmation" :width="300" :height="235">
-      <h2>Your informations are correct?</h2>
-      <p>Name: {{username}}</p>
-      <p>Password: {{password}}</p>
-      <p>E-mail: {{email}}</p>
-      <div class="wrapper__actions">
-      <a class="btn__modal btn__modal--no" href="#" v-on:click.self.prevent @click="closeForm">No</a>
-      <a class="btn__modal btn__modal--yes" v-on:click.self.prevent href="#" @click="finishForm">Yes</a>
+      
+      <div class="login__field login__field--terms">
+        <input type="checkbox" class="login__checkbox" id="terms"  name="terms" v-validate="'required'">
+        <span class="login__fakebox"></span>
+        <div class="terms">
+          <label for="terms" class="login__label--terms">I agree to all statements included in </label><a href="#" class="login__link" v-on:click.self.prevent>terms of service</a>
+        </div>
+        <span class="login__error" v-show="errors.has('terms')">{{ errors.first('terms') }}</span>
       </div>
-  </modal>
 
-  <modal class="thanks" name="thanks" :width="300" :height="235">
-    <h2 class="thanks__message">Thank you for your registration!</h2>
-  </modal>
-  </div>
+      <div class="login__field login__field--actions">
+        <a href="#" class="login__btn" v-on:click.self.prevent @click="nextStep">Sign Up</a>
+        <a href="#" class="login__link" v-on:click.self.prevent>I am already a member</a>
+      </div>
+    </form>
+
+    <modal name="confirmation" :width="300" :height="235">
+        <h2>Your informations are correct?</h2>
+        <p>Name: {{username}}</p>
+        <p>Password: {{password}}</p>
+        <p>E-mail: {{email}}</p>
+        <div class="wrapper__actions">
+        <a class="btn__modal btn__modal--no" href="#" v-on:click.self.prevent @click="closeForm">No</a>
+        <a class="btn__modal btn__modal--yes" v-on:click.self.prevent href="#" @click="finishForm">Yes</a>
+        </div>
+    </modal>
+
+    <modal class="thanks" name="thanks" :width="300" :height="235">
+      <h2 class="thanks__message">Thank you for your registration!</h2>
+    </modal>
+</div>
 </template>
 
 <script>
